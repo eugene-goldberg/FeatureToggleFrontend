@@ -47,6 +47,17 @@ export class DataService {
   // por lo que los metodos no hacen nada
   addIssue (issue: Issue): void {
     this.dialogData = issue;
+    const id = this.dialogData['id'];
+    const title = this.dialogData['title'];
+    const state = this.dialogData['state'];
+    const dataObject = {id: id, title: title, state: state};
+    console.log('Issue content:  ' + this.dialogData);
+    // this._http.post('http://localhost:8090/example/v1/hotels', dataObject)
+    this._http.post('http://localhost:8090/example/v1/hotels', dataObject).subscribe({
+      // next: data => this.postId = data.id,
+      error: error => console.error('There was an error!', error)
+  });
+
   }
 
   updateIssue (issue: Issue): void {
