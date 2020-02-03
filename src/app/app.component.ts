@@ -20,7 +20,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 
 export class AppComponent implements OnInit {
-  displayedColumns = ['id', 'title', 'state', 'url', 'created_at', 'updated_at', 'actions'];
+  displayedColumns = ['id', 'title', 'state', 'check', 'created_at', 'updated_at', 'actions'];
   exampleDatabase: DataService | null;
   dataSource: ExampleDataSource | null;
   index: number;

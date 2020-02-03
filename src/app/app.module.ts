@@ -19,6 +19,7 @@ import {DeleteDialogComponent} from './dialogs/delete/delete.dialog.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -42,12 +43,16 @@ import { HttpModule } from '@angular/http';
     MatToolbarModule,
     MatPaginatorModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    MatCheckboxModule
   ],
   entryComponents: [
     AddDialogComponent,
     EditDialogComponent,
     DeleteDialogComponent
+  ],
+  exports: [
+    MatCheckboxModule
   ],
   providers: [
     DataService
