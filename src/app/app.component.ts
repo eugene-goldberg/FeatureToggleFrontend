@@ -81,11 +81,23 @@ export class AppComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
         // When using an edit things are little different, firstly we find record inside DataService by id
-        const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id === this.id);
+        // const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id === this.id);
         // Then you update that record using data from dialogData (values you enetered)
-        this.exampleDatabase.dataChange.value[foundIndex] = this.dataService.getDialogData();
+        // this.exampleDatabase.dataChange.value[foundIndex] = this.dataService.getDialogData();
         // And lastly refresh table
-        this.refreshTable();
+        // this.refreshTable();
+
+        this.dataService.getTest().subscribe(
+          data => {
+            const ds = data.content as string [];
+         this.myDs = data.content as string [];	 // FILL THE ARRAY WITH DATA.
+          console.log(ds);
+       },
+       (err: HttpErrorResponse) => {
+         console.log (err.message);
+       }
+     );
+
       }
     });
   }
@@ -112,7 +124,7 @@ export class AppComponent implements OnInit {
     // Refreshing table using paginator
     // Thanks yeager-j for tips
     // https://github.com/marinantonio/angular-mat-table-crud/issues/12
-    this.paginator._changePageSize(this.paginator.pageSize);
+   // this.paginator._changePageSize(this.paginator.pageSize);
   }
 
 
