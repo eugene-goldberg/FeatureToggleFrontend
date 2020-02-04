@@ -3,6 +3,7 @@ export class Issue {
   name: string;
   state: string;
   url: string;
+  isAvailable: boolean;
   created_at: string;
   updated_at: string;
 }

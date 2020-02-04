@@ -50,7 +50,8 @@ export class DataService {
     const id = this.dialogData['id'];
     const title = this.dialogData['name'];
     const state = this.dialogData['state'];
-    const dataObject = {id: id, name: title, description: state};
+    const isAvailable = this.dialogData['isAvailable'];
+    const dataObject = {id: id, name: title, description: state, isAvailable: isAvailable};
     console.log('Issue content:  ' + this.dialogData);
     this._http.post('http://localhost:8090/example/v1/hotels', dataObject).subscribe({
       // next: data => this.postId = data.id,
