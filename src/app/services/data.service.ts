@@ -48,10 +48,10 @@ export class DataService {
   addIssue (issue: Issue): void {
     this.dialogData = issue;
     const id = this.dialogData['id'];
-    const title = this.dialogData['name'];
+    const name = this.dialogData['name'];
     const state = this.dialogData['state'];
     const isAvailable = this.dialogData['isAvailable'];
-    const dataObject = {id: id, name: title, description: state, isAvailable: isAvailable};
+    const dataObject = {id: id, name: name, state: state, isAvailable: isAvailable};
     console.log('Issue content:  ' + this.dialogData);
     this._http.post('http://localhost:8090/example/v1/hotels', dataObject).subscribe({
       // next: data => this.postId = data.id,
@@ -63,9 +63,10 @@ export class DataService {
   updateIssue (issue: Issue): void {
     this.dialogData = issue;
     const id = this.dialogData['id'];
-    const title = this.dialogData['name'];
+    const name = this.dialogData['name'];
     const state = this.dialogData['state'];
-    const dataObject = {id: id, name: title, description: state};
+    const isAvailable = this.dialogData['isAvailable'];
+    const dataObject = {id: id, name: name, state: state, isAvailable: isAvailable};
     console.log('Issue content:  ' + this.dialogData);
     this._http.put('http://localhost:8090/example/v1/hotels/' + id, dataObject).subscribe({
       error: error => console.error('There was an error!', error)

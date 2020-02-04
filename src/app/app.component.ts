@@ -20,12 +20,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 
 export class AppComponent implements OnInit {
-  displayedColumns = ['id', 'title', 'state', 'check', 'created_at', 'updated_at', 'actions'];
+  displayedColumns = ['id', 'title', 'state', 'isAvailable', 'created_at', 'updated_at', 'actions'];
   exampleDatabase: DataService | null;
   dataSource: ExampleDataSource | null;
   index: number;
   id: number;
-  myDs: string[];
+  myDs: any;
 
   constructor(public httpClient: HttpClient,
               public dialog: MatDialog,
@@ -50,9 +50,9 @@ export class AppComponent implements OnInit {
  );
   }
 
-  refresh() {
-    this.loadData();
-  }
+  // refresh() {
+  //   this.loadData();
+  // }
 
   addNew(issue: Issue) {
     const dialogRef = this.dialog.open(AddDialogComponent, {
@@ -69,13 +69,13 @@ export class AppComponent implements OnInit {
     });
   }
 
-  startEdit(i: number, id: number, name: string, state: string, url: string, created_at: string, updated_at: string) {
+  startEdit(i: number, id: number, name: string, state: string, isAvailable: boolean, url: string, created_at: string, updated_at: string) {
     this.id = id;
     // index row is used just for debugging proposes and can be removed
     this.index = i;
     console.log(this.index);
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      data: {id: id, name: name, state: state, url: url, created_at: created_at, updated_at: updated_at}
+      data: {id: id, name: name, state: state, isAvailable: isAvailable}
     });
 
     dialogRef.afterClosed().subscribe(result => {
