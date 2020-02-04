@@ -11,7 +11,10 @@ import {FormControl, Validators} from '@angular/forms';
 export class EditDialogComponent {
 
   constructor(public dialogRef: MatDialogRef<EditDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any, public dataService: DataService) { }
+              @Inject(MAT_DIALOG_DATA) public data: any, public dataService: DataService) {
+
+                const myData = data;
+               }
 
   formControl = new FormControl('', [
     Validators.required

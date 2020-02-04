@@ -48,7 +48,7 @@ export class DataService {
   addIssue (issue: Issue): void {
     this.dialogData = issue;
     const id = this.dialogData['id'];
-    const title = this.dialogData['title'];
+    const title = this.dialogData['name'];
     const state = this.dialogData['state'];
     const dataObject = {id: id, name: title, description: state};
     console.log('Issue content:  ' + this.dialogData);
@@ -62,11 +62,11 @@ export class DataService {
   updateIssue (issue: Issue): void {
     this.dialogData = issue;
     const id = this.dialogData['id'];
-    const title = this.dialogData['title'];
+    const title = this.dialogData['name'];
     const state = this.dialogData['state'];
     const dataObject = {id: id, name: title, description: state};
     console.log('Issue content:  ' + this.dialogData);
-    this._http.put('http://localhost:8090/example/v1/hotels', dataObject).subscribe({
+    this._http.put('http://localhost:8090/example/v1/hotels/' + id, dataObject).subscribe({
       error: error => console.error('There was an error!', error)
   });
   }
